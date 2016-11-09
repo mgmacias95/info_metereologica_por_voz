@@ -1,0 +1,26 @@
+#JSGF V1.0;
+
+grammar prevision_met;
+
+public <prevision_met> =
+    [<deseo>]
+    [<saber> <tiempo> <para> {this.cuando=$dias_proximos}]
+    [<en> {this.ciudad_prev=$ciudad}];
+
+<deseo> = quiero | me gustaría |
+[yo] quería | [yo] necesito | [yo] tengo que;
+
+<para> = para | para el;
+
+<en> = en;
+
+<saber> = saber | conocer | que [tú] me digas;
+
+<tiempo> = la previsión | el tiempo ;
+
+<ciudad> = jaén | córdoba | sevilla |
+huelva | cádiz | málaga | granada |
+almería;
+
+<dias_proximos> = hoy | mañana | pasado | pasadomañana lunes | martes | 
+miercoles | jueves | viernes | sábado | domingo;
