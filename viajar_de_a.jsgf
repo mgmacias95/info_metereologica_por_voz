@@ -1,0 +1,19 @@
+#JSGF V1.0;
+
+grammar viajar_de_a;
+
+public <viajar_de_a> =
+    [<deseo>]
+    [<viajar> <ciudad> {this.ciudadDestino=$ciudad}]
+    [<procedencia> <ciudad> {this.ciudadOrigen=$ciudad}];
+
+<deseo> = quiero | me gustaría |
+[yo] quería | [yo] necesito | [yo] tengo que;
+
+<viajar> = [ir | viajar] a;
+
+<ciudad> = jaén | córdoba | sevilla |
+huelva | cádiz | málaga | granada |
+almería;
+
+<procedencia> = de | desde |  salir desde | saliendo desde;

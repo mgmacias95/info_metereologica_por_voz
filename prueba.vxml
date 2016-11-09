@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<vxml version="2.1" xml:lang="es-ES">
+    <form id="datos" scope="document">
+        <field name="ciudadDestino">
+            <prompt> ¿A qué ciudad deseas viajar? </prompt>
+            <grammar src="ciudad_destino"/>
+        </field>
+        <filled>
+            <prompt> ¿Has dicho <value expr="ciudadDestino"/>? </prompt>
+        </filled>
+    </form>
+</vxml>
