@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <vxml version="2.1" xml:lang="es-ES">
-    <form id="datos" scope="document">
-        <field name="ciudadDestino">
-            <prompt> ¿A qué ciudad deseas viajar? </prompt>
-            <grammar src="ciudad_destino"/>
+  <form id="datos" scope="document">
+    <prompt> Bienvenido al sistema de información meterológica. </prompt>
+        <field name="ciudad_prev">
+            <prompt> ¿De qué ciudad quiere saber la información meteorológica? </prompt>
+            <grammar src="prevision_met"/>
         </field>
-        <filled>
-            <prompt> ¿Has dicho <value expr="ciudadDestino"/>? </prompt>
-        </filled>
+	<field name="confirmacion_ciudad" type="boolean" cond="0.6 >
+	  ciudad_prev$.confidence$">
+	  <prompt> Disculpe, no sé si he entendido bien. </prompt>
+	  <!--
+	      Reproducimos de nuevo el nombre para confirmarlo
+	  -->
+	  <prompt> ¿Ha dicho <value expr="ciudad_prev$.utterance"/>?</prompt>
+
+	  <filled>
+	    <if cond="!confirmacion_ciudad">
+	      <clear namelist="ciudad_prev">
+	    </if>
+	  </filled>
+	</field>
     </form>
 </vxml>
