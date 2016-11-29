@@ -1,0 +1,5 @@
+#JSGF V1.0;
+
+grammar siyno;
+
+public <siyno> = yes | no | I haven't said that | correct;

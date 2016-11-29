@@ -9,6 +9,7 @@
         </field>
         <field name="conformacion_ciudad" type="boolean" cond="0.6 > Ciudad$.confidence">
             <prompt> Have you said <value expr="Ciudad"/>? </prompt>
+            <grammar src="siyno.grammar"/>
         </field>
     </form>
 </vxml>
