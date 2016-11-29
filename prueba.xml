@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml version = "2.1" xml:lang="es-ES">
-    <form id="MainMenu">
+    <form id="mainMenu">
         <block bargein="false">
             <prompt>Bienvenido al sistema de información metereológica</prompt>
         </block>
+        <!-- En primer lugar le pedimos al usuario que especifique la ciudad -->
         <field name="Ciudad">
             <prompt> 
                 Por favor, dime el nombre de una ciudad.
@@ -43,6 +44,14 @@
                     <reprompt/>
                 </if>
             </filled>                
+        </field>
+        <!-- Después, le pedimos que especifique el día para el que desea 
+        saber la previsión -->
+        <field name="Cuando">
+            <prompt>
+                Ahora dime para qué día deseas saber la previsión.
+            </prompt>
+            <grammar src="cuando.grammar"/>
         </field>
     </form>
 </vxml>

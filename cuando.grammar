@@ -1,0 +1,10 @@
+#JSGF V1.0;
+
+grammar cuando;
+
+public <cuando> = [<para>] [<dia> {this.Cuando=$dia}];
+
+<para> = para [el];
+
+<dia> = mañana | pasado | pasado mañana | otro | lunes | martes | 
+        miércoles | jueves | viernes | sábado | domingo; 
