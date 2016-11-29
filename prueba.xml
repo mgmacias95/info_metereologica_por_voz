@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vxml version = "2.1">
+<vxml version = "2.1" xml:lang="es-ES">
     <form id="MainMenu">
         <field name="Ciudad">
             <prompt> 
-                Welcome to the city weather system. Please, tell me the name of a city.
+                Bienvenido al sistema de información metereológica. Por favor, dime el nombre de una ciudad.
             </prompt>
             <grammar src="ciudades.grammar"/>
         </field>
-        <field name="conformacion_ciudad" type="boolean" cond="0.6 > Ciudad$.confidence">
-            <prompt> Have you said <value expr="Ciudad"/>? </prompt>
+        <field name="conformacion_ciudad" type="boolean">
+            <prompt> ¿Has dicho <value expr="Ciudad"/>? </prompt>
             <grammar src="siyno.grammar"/>
         </field>
     </form>

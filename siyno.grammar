@@ -2,4 +2,4 @@
 
 grammar siyno;
 
-public <siyno> = yes | no | I haven't said that | correct;
+public <siyno> = sí | no | correcto | [yo] no he dicho eso;
