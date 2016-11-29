@@ -1,15 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml version = "2.1" xml:lang="es-ES">
     <form id="MainMenu">
+        <block bargein="false">
+            <prompt>Bienvenido al sistema de información metereológica</prompt>
+        </block>
         <field name="Ciudad">
             <prompt> 
-                Bienvenido al sistema de información metereológica. Por favor, dime el nombre de una ciudad.
+                Por favor, dime el nombre de una ciudad.
+            </prompt>
+            <prompt count="2">
+                Por favor, dime de nuevo el nombre de la ciudad.
             </prompt>
             <grammar src="ciudades.grammar"/>
+
+        <noinput>
+            <prompt>
+                No te he oído. Inténtalo de nuevo.
+            </prompt>
+        </noinput>
+
+        <nomatch>
+            <prompt>
+                No te he entendido bien.
+            </prompt>
+            <reprompt/>
+        </nomatch>
         </field>
-        <field name="conformacion_ciudad" type="boolean">
+        <field name="confirmacion_ciudad" type="boolean">
             <prompt> ¿Has dicho <value expr="Ciudad"/>? </prompt>
-            <grammar src="siyno.grammar"/>
+            <grammar>
+                SI_NO[
+                    [sí]{return("yes")}
+                    [no]{return("no")}
+                ]
+            </grammar>
+
+            <!-- si el usuario dice que no, se le vuelve a pedir la ciudad -->
+            <filled>
+                <if cond="!confirmacion_ciudad">
+                    <clear namelist="Ciudad"/>
+                    <clear namelist="confirmacion_ciudad"/>
+                    <reprompt/>
+                </if>
+            </filled>                
         </field>
     </form>
 </vxml>
