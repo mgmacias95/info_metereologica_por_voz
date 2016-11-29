@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml version = "2.1">
+    <form id="MainMenu">
+        <field name="Ciudad">
+            <prompt> 
+                Welcome to the city weather system. Please, tell me the name of a city.
+            </prompt>
+            <grammar src="ciudades.grammar"/>
+        </field>
+        <field name="conformacion_ciudad" type="boolean" cond="0.6 > Ciudad$.confidence">
+            <prompt> Have you said <value expr="Ciudad"/>? </prompt>
+        </field>
+    </form>
+</vxml>
