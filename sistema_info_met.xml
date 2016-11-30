@@ -51,7 +51,23 @@
             <prompt>
                 Ahora dime para qué día deseas saber la previsión.
             </prompt>
+            <prompt count="2">
+                Repite de nuevo el día para el que deseas saber la previsión.
+            </prompt>
             <grammar src="cuando.grammar"/>
+            
+            <noinput>
+                <prompt>
+                    No te he oído. Inténtalo de nuevo.
+                </prompt>
+            </noinput>
+
+            <nomatch>
+                <prompt>
+                    No te he entendido bien.
+                </prompt>
+                <reprompt/>
+            </nomatch>
         </field>
     </form>
 </vxml>
