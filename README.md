@@ -27,4 +27,4 @@ El sistema tendrá una gramática donde guarde __nombres de ciudades__, dicha gr
 
 Para obtener la información metereológica, usamos la _Weather API_ de [Yahoo](https://www.yahoo.com/?ilc=401).
 
-![Yahoo logo](https://poweredby.yahoo.com/purple.png "Yahoo logo")
+![Yahoo logo](https://poweredby.yahoo.com/purple.png)
