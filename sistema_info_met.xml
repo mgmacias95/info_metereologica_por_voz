@@ -69,5 +69,23 @@
                 <reprompt/>
             </nomatch>
         </field>
+        <field name="confirmacion_cuando" type="boolean">
+            <prompt> ¿Has dicho <value expr="Cuando"/>? </prompt>
+            <grammar>
+                SI_NO[
+                    [sí]{return("yes")}
+                    [no]{return("no")}
+                ]
+            </grammar>
+
+            <!-- si el usuario dice que no, se le vuelve a pedir la cuando -->
+            <filled>
+                <if cond="!confirmacion_cuando">
+                    <clear namelist="Cuando"/>
+                    <clear namelist="confirmacion_cuando"/>
+                    <reprompt/>
+                </if>
+            </filled>                
+        </field>
     </form>
 </vxml>
