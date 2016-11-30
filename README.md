@@ -22,3 +22,9 @@ La interacción del sistema se realiza mediante la voz. Un ejemplo de diálogo s
 * El tiempo previsto para mañana en Granada es _Soleado_, con una temperatura mínima de _20 grados_ y una máxima de _30_.
 
 El sistema tendrá una gramática donde guarde __nombres de ciudades__, dicha gramática será la que el sistema use cuando el sistema le pida decir una ciudad. El sistema dispondrá de otra gramática con __los días de la semana__ y palabras tales como __mañana__, __pasado__, __hoy__, etc. Por último, el sistema tendrá otra gramática con los distintos __tipos de previsiones__ que puede dar.
+
+## Información metereológica
+
+Para obtener la información metereológica, usamos la _Weather API_ de [Yahoo](https://www.yahoo.com/?ilc=401).
+
+![Yahoo logo](https://poweredby.yahoo.com/purple.png "Yahoo logo")
