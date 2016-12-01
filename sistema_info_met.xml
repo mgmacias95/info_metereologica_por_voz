@@ -87,5 +87,17 @@
                 </if>
             </filled>                
         </field>
+        <!-- Una vez obtenida la información clave, pasamos a decirle al usuario
+        la previsión metereológica -->
+        <script>
+        <![CDATA[
+            var callbackFunction = function(data) {
+                var wind = data.query.results.channel.wind;
+                alert(wind.chill);
+            };
+        ]]>
+        </script>
+
+        <data srcexpr="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places where text='"+Ciudad+", spain')&callback=callbackFunction"/>
     </form>
 </vxml>
