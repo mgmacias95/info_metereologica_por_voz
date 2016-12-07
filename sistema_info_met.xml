@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml version = "2.1" xml:lang="es-ES">
+    <var name="yahoomet" />
     <form id="mainMenu">
         <block bargein="false">
             <prompt>Bienvenido al sistema de información metereológica</prompt>
@@ -43,7 +44,7 @@
                     <clear namelist="confirmacion_ciudad"/>
                     <reprompt/>
                 </if>
-            </filled>                
+            </filled>
         </field>
         <!-- Después, le pedimos que especifique el día para el que desea 
         saber la previsión -->
@@ -89,15 +90,8 @@
         </field>
         <!-- Una vez obtenida la información clave, pasamos a decirle al usuario
         la previsión metereológica -->
-        <script>
-        <![CDATA[
-            var callbackFunction = function(data) {
-                var wind = data.query.results.channel.wind;
-                alert(wind.chill);
-            };
-        ]]>
-        </script>
-
-        <data srcexpr="https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places where text='"+Ciudad+", spain')&callback=callbackFunction"/>
+        <block>
+            <data name="yahoomet" srcexpr="'https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places where text=''+Ciuad+', spain')'"/>
+        </block>
     </form>
 </vxml>
