@@ -2,4 +2,4 @@
 
 grammar ciudades;
 
-public <ciudades> = jaén | córdoba | sevilla | huelva | cádiz | málaga | granada | almería;
+public <ciudades> = jaen | cordoba | sevilla | huelva | cadiz | malaga | granada | almeria;
