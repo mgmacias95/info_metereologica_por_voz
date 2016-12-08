@@ -3,7 +3,7 @@
     <var name="yahoomet" />
     <form id="mainMenu">
         <block bargein="false">
-            <prompt>Bienvenido al sistema de información metereológica</prompt>
+            <prompt>Bienvenido al sistema de información metereológica.</prompt>
         </block>
         <!-- En primer lugar le pedimos al usuario que especifique la ciudad -->
         <field name="Ciudad">
@@ -28,7 +28,7 @@
             <reprompt/>
         </nomatch>
         </field>
-        <field name="confirmacion_ciudad" type="boolean">
+        <field name="confirmacion_ciudad" type="boolean" cond="0.7>Ciudad$.confidence">
             <prompt> ¿Has dicho <value expr="Ciudad"/>? </prompt>
             <grammar>
                 SI_NO[
@@ -70,7 +70,7 @@
                 <reprompt/>
             </nomatch>
         </field>
-        <field name="confirmacion_cuando" type="boolean">
+        <field name="confirmacion_cuando" type="boolean" cond="0.7>Cuando$.confidence">
             <prompt> ¿Has dicho <value expr="Cuando"/>? </prompt>
             <grammar>
                 SI_NO[
@@ -91,7 +91,15 @@
         <!-- Una vez obtenida la información clave, pasamos a decirle al usuario
         la previsión metereológica -->
         <block>
-            <data name="yahoomet" srcexpr="'https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places where text=''+Ciuad+', spain')'"/>
+            <script>
+                <script> 
+                    var get_prediction = function(data){
+                        
+                    }
+                </script>
+
+                <script src="https://query.yahooapis.com/v1/public/yql?q=select wind from weather.forecast where woeid in (select woeid from geo.places(1) where text='chicago, il')&format=json"></script>
+            </script>
         </block>
     </form>
 </vxml>
