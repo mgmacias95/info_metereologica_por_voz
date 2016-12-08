@@ -90,10 +90,26 @@
         </field>
         <!-- Una vez obtenida la información clave, pasamos a decirle al usuario
         la previsión metereológica -->
-        <block>
-            <var name="querymet" expr="'('+Ciudad+',spain)'"/>
-            <log expr="'Query = ' + querymet" />
-            <data name="yahoomet" srcexpr="'https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places where text='+querymet"/>
-        </block>
+        <!-- <var name="querymet" expr="'('+Ciudad+',spain)'"/>
+        <log expr="'Query = ' + querymet" />
+        <data name="yahoomet" srcexpr="'https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places where text='+querymet"/> -->
+        <!-- Script que obtiene el woeid de una ciudad dada -->
+        <script>
+            <![CDATA[
+            function Get(city){
+                var Httpreq = new XMLHttpRequest(); 
+                var dir = "https://query.yahooapis.com/v1/public/yql?q=";
+                var q = "select woeid from geo.places(1) where text=";
+                var c = "(" + city + ", spain)";
+                var get_q = dir + q + "'" + c + "'" + "&format=json";
+                Httpreq.open("GET",get_q,false);
+                Httpreq.send(null);
+                var res_json = JSON.parse(Httpreq.responseText);
+                return res_json.query.results.place.woeid
+            }
+            ]]>
+        </script>
+        <var name="idcity" expr="Get(Ciudad)"/>
+        <log expr="'WOEID = ' + idcity" />
     </form>
 </vxml>
