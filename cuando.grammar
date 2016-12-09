@@ -4,7 +4,7 @@ grammar cuando;
 
 public <cuando> = [<para>] [<dia> {this.Cuando=$dia}];
 
-<para> = [para] [el];
+<para> = para [el];
 
 <dia> = hoy | manana | pasado | pasado manana | otro | lunes | martes | 
         miércoles | jueves | viernes | sábado | domingo; 
