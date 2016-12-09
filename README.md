@@ -21,7 +21,7 @@ La interacción del sistema se realiza mediante la voz. Un ejemplo de diálogo s
 
 * La previsión metereológica para mañana en Granada es _Soleado_, con una temperatura mínima de _20_ y una máxima de _30_ grados centígrados.
 
-El sistema tendrá una gramática donde guarde __nombres de ciudades__, dicha gramática será la que el sistema use cuando el sistema le pida decir una ciudad. El sistema dispondrá de otra gramática con __los días de la semana__ y palabras tales como __mañana__, __pasado__, __hoy__, etc. Por último, el sistema tendrá otra gramática con los distintos __tipos de previsiones__ que puede dar.
+El sistema tendrá una gramática donde guarde __nombres de ciudades__, dicha gramática será la que el sistema use cuando el sistema le pida decir una ciudad. El sistema dispondrá de otra gramática con __los días de la semana__ y palabras tales como __mañana__, __pasado__, __hoy__, etc.
 
 ## Información metereológica
 
