@@ -1,13 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vxml version = "2.1" xml:lang="es-ES">
-    <var name="met" />
-    <var name="woeid" />
-    <form id="mainMenu">
-        <block bargein="false">
-            <prompt>Bienvenido al sistema de información metereológica</prompt>
+<vxml version = "2.1"  xml:lang="es-ES">
+    <!-- Link necesario para pedir ayuda cuando el usuario la requiera. -->
+    <link event="help">
+       <grammar mode="voice"
+             root="root_rule"
+             version="1.0"
+             xml:lang="es-ES">
+          <rule id="root_rule">
+            <one-of>
+                <item>ayuda</item>
+                <item>ayudame</item>
+                <item>ayuda por favor</item>
+                <item>por favor, ayuda</item>
+                <item>ayudame por favor</item>
+                <item>por favor, ayudame</item>
+            </one-of>
+          </rule>
+       </grammar>
+    </link>
         </block>
         <!-- En primer lugar le pedimos al usuario que especifique la ciudad -->
         <field name="Ciudad">
+            <help>
+                <prompt>
+                    Para utilizar el sistema debe seguir los siguientes pasos:
+                    Primero: elegir una de las provicias de Andalucía.
+                    Segundo: decir el día para el que queremos la previsión.
+                    Con todo esto, el sistema dará la información meteorológica para el lugar y día elegidos, pudiendo escoger otra ciudad y o día.
+                </prompt>
+                <reprompt/>
+            </help>
+
             <prompt> 
                 Por favor, dime el nombre de una ciudad.
             </prompt>
