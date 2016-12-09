@@ -58,7 +58,8 @@
     $index_weather = get_day($weather_today, $Cuando);
     $condition_index = $weather_resumen[$index_weather]['code'];
     $weather_condition = $cond_met[intval($condition_index)];
-
+    $min_temp = $weather_resumen[$index_weather]['low'];
+    $max_temp = $weather_resumen[$index_weather]['high'];
    
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 ?>
@@ -67,7 +68,7 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
     <form id="form_main">
         <block>
             <prompt>
-                La prevision para <?php echo $Cuando ?> en <?php echo $Ciudad ?> es <?php echo $weather_condition ?>
+                La prevision para <?php echo $Cuando ?> en <?php echo $Ciudad ?> es <?php echo $weather_condition ?>. Con una temperatura minima de <?php echo $min_temp ?> y una temperatura maxima de <?php echo $max_temp ?> grados centigrados.
                 <break/>
             </prompt>
         </block>
