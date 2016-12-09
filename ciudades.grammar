@@ -2,4 +2,4 @@
 
 grammar ciudades;
 
-public <ciudades> = jaen | cordoba | sevilla | huelva | cadiz | malaga | granada | almeria;
+public <ciudades> =  alava | albacete | alicante | almeria | asturias | avila | badajoz | barcelona | burgos | caceres | cadiz | cantabria | castellon | ciudad real | cordoba | la coruña | cuenca | gerona | granada | guadalajara | guipuzcoa | huelva | huesca | baleares | jaen | leon | lerida | lugo | madrid | malaga | murcia | navarra | orense | palencia | las palmas | pontevedra | la rioja | salamanca | segovia | sevilla | soria | tarragona | santa cruz de tenerife | teruel | toledo | valencia | valladolid | vizcaya | zamora | ceuta | melilla; 
