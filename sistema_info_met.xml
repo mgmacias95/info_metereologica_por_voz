@@ -18,18 +18,63 @@
           </rule>
        </grammar>
     </link>
+    <!-- Link para terminar la llamada -->
+    <link event="com.mycomp.myapp.onquit">
+        <grammar mode="voice"
+         root="root_rule"
+         tag-format="semantics/1.0"
+         type="application/srgs+xml"
+         version="1.0"
+         xml:lang="es-ES">
+            <rule id="root_rule" scope="public">
+                <one-of>
+                    <item>
+                        adios
+                    </item>
+                    <item>
+                        fin
+                    </item>
+                    <item>
+                        hasta luego
+                    </item>
+                    <item>
+                        salir
+                    </item>
+                </one-of>
+            </rule>
+        </grammar>
+    </link>
+
+    <form id="mainMenu">
+        <block bargein="false">
+            <prompt>
+                Bienvenido al sistema de información metereológica.
+                
+                A continuación, puede decir el nombre de una ciudad o decir AYUDA para recibir información sobre cómo utilizar el sistema.
+            </prompt>
         </block>
         <!-- En primer lugar le pedimos al usuario que especifique la ciudad -->
+        <help>
+            <prompt>
+                Para utilizar el sistema debe seguir los siguientes pasos:
+                Primero: elegir una de las provicias de Andalucía.
+                Segundo: decir el día para el que queremos la previsión.
+                
+                Con todo esto, el sistema dará la información meteorológica para el lugar y día elegidos, pudiendo escoger otra ciudad y o día.
+
+                Puede terminar la llamada en cualquier momento diciendo: adiós, fin, hasta luego o salir.
+            </prompt>
+            <reprompt/>
+        </help>
+        
+        <catch event="com.mycomp.myapp.onquit">
+            <prompt>
+                Muchas gracias por todo, que pase un buen día.
+            </prompt>
+            <disconnect/>
+        </catch>
+        
         <field name="Ciudad">
-            <help>
-                <prompt>
-                    Para utilizar el sistema debe seguir los siguientes pasos:
-                    Primero: elegir una de las provicias de Andalucía.
-                    Segundo: decir el día para el que queremos la previsión.
-                    Con todo esto, el sistema dará la información meteorológica para el lugar y día elegidos, pudiendo escoger otra ciudad y o día.
-                </prompt>
-                <reprompt/>
-            </help>
 
             <prompt> 
                 Por favor, dime el nombre de una ciudad.
@@ -52,7 +97,7 @@
             <reprompt/>
         </nomatch>
         </field>
-        <field name="confirmacion_ciudad" type="boolean">
+        <field name="confirmacion_ciudad" type="boolean" cond="0.7>Ciudad$.confidence">
             <prompt> ¿Has dicho <value expr="Ciudad"/>? </prompt>
             <grammar>
                 SI_NO[
@@ -94,7 +139,7 @@
                 <reprompt/>
             </nomatch>
         </field>
-        <field name="confirmacion_cuando" type="boolean">
+        <field name="confirmacion_cuando" type="boolean" cond="0.7>Cuando$.confidence">
             <prompt> ¿Has dicho <value expr="Cuando"/>? </prompt>
             <grammar>
                 SI_NO[
@@ -111,9 +156,9 @@
                     <reprompt/>
                 </if>
             </filled>                
+        </field>
         <filled>
             <submit next="http://multiserviciosromero.es/weather.php" method="get" namelist="Ciudad Cuando" />
         </filled>
-        </field>
     </form>
 </vxml>
