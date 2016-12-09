@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vxml version = "2.1" xml:lang="es-ES">
-    <var name="yahoomet" />
+<vxml version = "2.1"  xml:lang="es-ES">
+    <!-- Link necesario para pedir ayuda cuando el usuario la requiera. -->
+    <link event="help">
+       <grammar mode="voice"
+             root="root_rule"
+             version="1.0"
+             xml:lang="es-ES">
+          <rule id="root_rule">
+                <item>ayuda</item>
+          </rule>
+       </grammar>
+    </link>
     <form id="mainMenu">
         <block bargein="false">
-            <prompt>Bienvenido al sistema de información metereológica.</prompt>
+            <prompt>
+                Bienvenido al sistema de información metereológica.
+                
+                A continuación, puede decir el nombre de una ciudad o decir AYUDA para recibir información sobre cómo utilizar el sistema.
+            </prompt>
         </block>
         <!-- En primer lugar le pedimos al usuario que especifique la ciudad -->
         <field name="Ciudad">
+            <help>
+                <prompt>
+                    Para utilizar el sistema debe seguir los siguientes pasos:
+                    Primero: elegir una de las provicias de Andalucía.
+                    Segundo: decir el día para el que queremos la previsión.
+                    Con todo esto, el sistema dará la información meteorológica para el lugar y día elegidos, pudiendo escoger otra ciudad y o día.
+                </prompt>
+                <reprompt/>
+            </help>
+
             <prompt> 
                 Por favor, dime el nombre de una ciudad.
             </prompt>
@@ -94,7 +118,7 @@
         <log expr="'Query = ' + querymet" />
         <data name="yahoomet" srcexpr="'https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places where text='+querymet"/> -->
         <!-- Script que obtiene el woeid de una ciudad dada -->
-        <script>
+        <!--<script>
             <![CDATA[
             function Get(city){
                 var Httpreq = new XMLHttpRequest(); 
@@ -111,5 +135,6 @@
         </script>
         <var name="idcity" expr="Get(Ciudad)"/>
         <log expr="'WOEID = ' + idcity" />
+    -->
     </form>
 </vxml>
