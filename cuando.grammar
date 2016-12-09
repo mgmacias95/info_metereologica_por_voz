@@ -6,5 +6,5 @@ public <cuando> = [<para>] [<dia> {this.Cuando=$dia}];
 
 <para> = para [el];
 
-<dia> = manana | pasado | pasado manana | otro | lunes | martes | 
+<dia> = hoy | manana | pasado | pasado manana | otro | lunes | martes | 
         miércoles | jueves | viernes | sábado | domingo; 
