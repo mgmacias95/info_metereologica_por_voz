@@ -16,7 +16,7 @@
         $days_sp = array("lunes","martes","miercoles","jueves","viernes","sabado","domingo");
         $today_index = find_index($days_en, $today);
 
-        $code = 0;
+        $code = 49;
         if ($when == "hoy") {
             $code = 0;
         } elseif ($when == "manana") {

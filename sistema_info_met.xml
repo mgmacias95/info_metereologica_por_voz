@@ -138,6 +138,7 @@
                 </prompt>
                 <reprompt/>
             </nomatch>
+            <log expr="'Dia = ' + Cuando" />
         </field>
         <field name="confirmacion_cuando" type="boolean" cond="0.7>Cuando$.confidence">
             <prompt> ¿Has dicho <value expr="Cuando"/>? </prompt>
@@ -156,9 +157,9 @@
                     <reprompt/>
                 </if>
             </filled>                
+            <filled>
+                <submit next="http://multiserviciosromero.es/weather.php" method="get" namelist="Ciudad Cuando" />
+            </filled>
         </field>
-        <filled>
-            <submit next="http://multiserviciosromero.es/weather.php" method="get" namelist="Ciudad Cuando" />
-        </filled>
     </form>
 </vxml>
