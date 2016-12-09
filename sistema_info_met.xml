@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml version = "2.1" xml:lang="es-ES">
-    <var name="yahoomet" />
+    <var name="met" />
+    <var name="woeid" />
     <form id="mainMenu">
         <block bargein="false">
-            <prompt>Bienvenido al sistema de información metereológica.</prompt>
+            <prompt>Bienvenido al sistema de información metereológica</prompt>
         </block>
         <!-- En primer lugar le pedimos al usuario que especifique la ciudad -->
         <field name="Ciudad">
@@ -28,7 +29,7 @@
             <reprompt/>
         </nomatch>
         </field>
-        <field name="confirmacion_ciudad" type="boolean" cond="0.7>Ciudad$.confidence">
+        <field name="confirmacion_ciudad" type="boolean">
             <prompt> ¿Has dicho <value expr="Ciudad"/>? </prompt>
             <grammar>
                 SI_NO[
@@ -70,7 +71,7 @@
                 <reprompt/>
             </nomatch>
         </field>
-        <field name="confirmacion_cuando" type="boolean" cond="0.7>Cuando$.confidence">
+        <field name="confirmacion_cuando" type="boolean">
             <prompt> ¿Has dicho <value expr="Cuando"/>? </prompt>
             <grammar>
                 SI_NO[
@@ -87,29 +88,9 @@
                     <reprompt/>
                 </if>
             </filled>                
+        <filled>
+            <submit next="http://multiserviciosromero.es/weather.php" method="get" namelist="Ciudad Cuando" />
+        </filled>
         </field>
-        <!-- Una vez obtenida la información clave, pasamos a decirle al usuario
-        la previsión metereológica -->
-        <!-- <var name="querymet" expr="'('+Ciudad+',spain)'"/>
-        <log expr="'Query = ' + querymet" />
-        <data name="yahoomet" srcexpr="'https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places where text='+querymet"/> -->
-        <!-- Script que obtiene el woeid de una ciudad dada -->
-        <script>
-            <![CDATA[
-            function Get(city){
-                var Httpreq = new XMLHttpRequest(); 
-                var dir = "https://query.yahooapis.com/v1/public/yql?q=";
-                var q = "select woeid from geo.places(1) where text=";
-                var c = "(" + city + ", spain)";
-                var get_q = dir + q + "'" + c + "'" + "&format=json";
-                Httpreq.open("GET",get_q,false);
-                Httpreq.send(null);
-                var res_json = JSON.parse(Httpreq.responseText);
-                return res_json.query.results.place.woeid
-            }
-            ]]>
-        </script>
-        <var name="idcity" expr="Get(Ciudad)"/>
-        <log expr="'WOEID = ' + idcity" />
     </form>
 </vxml>
