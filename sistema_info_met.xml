@@ -7,7 +7,14 @@
              version="1.0"
              xml:lang="es-ES">
           <rule id="root_rule">
+            <one-of>
                 <item>ayuda</item>
+                <item>ayudame</item>
+                <item>ayuda por favor</item>
+                <item>por favor, ayuda</item>
+                <item>ayudame por favor</item>
+                <item>por favor, ayudame</item>
+            </one-of>
           </rule>
        </grammar>
     </link>
